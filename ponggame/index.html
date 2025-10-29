@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pong Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Classic Pong</h1>
+
+  <canvas id="gameCanvas" width="600" height="400"></canvas>
+  <div id="message">Use up and down arrows to move the paddle</div>
+
+  <div id="controls">
+    <button id="startBtn">Start</button>
+    <button id="backBtn" onclick="goBack()">Back</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function goBack() {
+        window.location.href = "../index.html";
+    }

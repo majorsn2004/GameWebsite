@@ -20,6 +20,7 @@ function startGame() {
   game = setInterval(draw, 100);
 }
 
+//random food pop up
 function randomFood() {
   return {
     x: Math.floor(Math.random() * (canvas.width / box)) * box,
@@ -27,6 +28,7 @@ function randomFood() {
   };
 }
 
+//changing directions for snake (up,down and side to side arrows)
 function changeDirection(e) {
   if (e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
   else if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
@@ -38,11 +40,11 @@ function draw() {
   ctx.fillStyle = "#111";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
- 
+ //food
   ctx.fillStyle = "red";
   ctx.fillRect(food.x, food.y, box, box);
 
-
+ //snake
   for (let i = 0; i < snake.length; i++) {
     ctx.fillStyle = i === 0 ? "lime" : "green";
     ctx.fillRect(snake[i].x, snake[i].y, box, box);
@@ -57,7 +59,7 @@ function draw() {
   if (direction === "RIGHT") headX += box;
   if (direction === "DOWN") headY += box;
 
-  
+  //score
   if (headX === food.x && headY === food.y) {
     score++;
     scoreDisplay.textContent = "Score: " + score;

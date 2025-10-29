@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 const startBtn = document.getElementById('startBtn');
 const messageDiv = document.getElementById('message');
 
+//setup for game
 let board = [
   ["", "", ""],
   ["", "", ""],
@@ -13,18 +14,20 @@ let gameActive = false;
 
 const size = canvas.width / 3; 
 
-
+//grid
 function drawBoard() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.lineWidth = 3;
   for (let i = 1; i <= 2; i++) {
   
+    //vertical
     ctx.beginPath();
     ctx.moveTo(i * size, 0);
     ctx.lineTo(i * size, canvas.height);
     ctx.stroke();
 
 
+    //horizontal 
     ctx.beginPath();
     ctx.moveTo(0, i * size);
     ctx.lineTo(canvas.width, i * size);
@@ -32,7 +35,7 @@ function drawBoard() {
   }
 }
 
-
+//players move
 function drawMove(row, col, player) {
   const x = col * size + size / 2;
   const y = row * size + size / 2;
@@ -53,7 +56,7 @@ function drawMove(row, col, player) {
   }
 }
 
-
+//checking for the winner
 function checkWinner() {
   const lines = [
 
@@ -75,11 +78,13 @@ function checkWinner() {
       return board[a[0]][a[1]];
     }
   }
+
+  //this is for a tie
   if (board.flat().every(cell => cell)) return "Tie";
   return null;
 }
 
-
+//for mouse clicks
 canvas.addEventListener('click', (e) => {
   if (!gameActive) return;
 
